@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{loggedin/afterlogin :: loggedin(~{::#updateContactData},~{::title} , ~{})}">
+
+<head>
+    <title>Update Contact</title>
+</head>
+
+<body>
+
+    <div id="updateContactData" class="p-8">
+
+        <div class="grid grid-cols-12">
+
+            <div class="col-span-4  md:col-span-2  lg:col-span-3">
+
+            </div>
+
+
+            <div class=" col-span-12  md:col-span-8 md:mt-15 lg:col-span-6 ">
+                <!-- 6 space is get it -->
+                <!-- show Message From here -->
+
+                <div data-th-replace="~{message :: message-frag}"></div>
+
+
+                <div
+                    class="max-w-2xl mx-auto bg-white dark:hover:bg-gray-700 dark:bg-gray-800 hover:bg-gray-100 p-6 rounded-lg shadow-md dark:text-white ">
+                    <h2 class="text-2xl font-semibold mb-6">Update Contact Information</h2>
+                    <form data-th-action="@{'proceed-contactDetail'}" data-th-object="${contactDetail}" method="post"
+                        enctype="multipart/form-data">
+                        <input type="hidden" data-th-field="*{contactId}" />
+                        <input type="hidden" data-th-field="*{imagePublicId}" />
+                        <input type="hidden" data-th-field="*{contactPic}" />
+                        <input type="hidden" data-th-field="*{favorite}" />
+                        <input type="hidden" name="fromRes" data-th-value="${fromRes}" />
+                        <input type="hidden" name="element" data-th-value="${element}" />
+                        <input type="hidden" name="page" data-th-value="${currentPage}" />
+
+                        <!-- Name -->
+
+                        <div class="grid md:grid-cols-2 md:gap-6">
+
+
+                            <div class="mb-4">
+
+                                <label for="name"
+                                    class="block text-sm font-medium text-gray-700 dark:text-white">
+                                    <i class="fa-solid fa-user"></i>
+                                    Name</label>
+                                <input type="text" id="name" data-th-field="*{name}"
+                                    class="mt-1 block w-full border-0 border-b-2 rounded-sm border-gray-300 shadow-sm bg-transparent appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600" />
+
+
+                                <p data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"
+                                    class="mt-2 text-sm text-red-600 dark:text-red-500">
+                                </p>
+
+                            </div>
+
+                            <!-- Nickname -->
+
+                            <div class="mb-4">
+
+                                <label for="nickname"
+                                    class="block text-sm font-medium text-gray-700 dark:text-white">
+                                    <i class="fa-solid fa-signature"></i>
+                                    Nickname</label>
+                                <input type="text" id="nickName" data-th-field="*{nickName}"
+                                    class="mt-1 block w-full border-0 border-b-2 rounded-sm border-gray-300 shadow-sm bg-transparent appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600" />
+
+                                <p data-th-if="${#fields.hasErrors('nickName')}" data-th-errors="*{nickName}"
+                                    class="mt-2 text-sm text-red-600 dark:text-red-500">
+                                </p>
+
+                            </div>
+                        </div>
+
+
+                        <div class="grid md:grid-cols-2 md:gap-6">
+
+                            <!-- ContactNumber -->
+
+                            <div class="mb-4">
+
+                                <label for="contactNumber"
+                                    class="block text-sm font-medium text-gray-700 dark:text-white">
+                                    <i class=" fa-solid fa-phone"></i> Contact Number</label>
+                                <input type="text" id="contactNumber" data-th-field="*{contactNumber}"
+                                    class="mt-1 block w-full border-0 border-b-2 rounded-sm border-gray-300 shadow-sm bg-transparent appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600" />
+
+                                <p data-th-if="${#fields.hasErrors('contactNumber')}" data-th-errors="*{contactNumber}"
+                                    class="mt-2 text-sm text-red-600 dark:text-red-500">
+                                </p>
+
+                            </div>
+
+                            <!-- ContactEmail -->
+
+                            <div class="mb-4">
+
+                                <label for="contactEmail"
+                                    class="block text-sm font-medium text-gray-700 dark:text-white">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Contact Email</label>
+                                <input type="email" id="contactEmail" data-th-field="*{contactEmail}"
+                                    class="mt-1 block w-full border-0 border-b-2 rounded-sm border-gray-300 shadow-sm bg-transparent appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600" />
+
+                                <p data-th-if="${#fields.hasErrors('contactEmail')}" data-th-errors="*{contactEmail}"
+                                    class="mt-2 text-sm text-red-600 dark:text-red-500">
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        
+                        <div class="grid md:grid-cols-2 md:gap-6">
+
+                            <!-- Linkedin profile -->
+
+                            <div class="mb-4">
+
+                                <label for="linked-in"
+                                    class="block text-sm font-medium text-gray-700 dark:text-white">
+                                   <i class="fa-brands fa-linkedin"></i> Linked-In Profile</label>
+                                <input type="text" data-th-field="*{links[0].linkedIn}"
+                                    class="mt-1 block w-full border-0 border-b-2 rounded-sm border-gray-300 shadow-sm bg-transparent appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600" />
+
+                            </div>
+
+                            <!-- Instagram Profile-->
+
+                            <div class="mb-4">
+
+                                <label for="instagram"
+                                    class="block text-sm font-medium text-gray-700 dark:text-white">
+                                   <i class="fa-brands fa-instagram"></i> Instagram Profile</label>
+                                <input type="text" data-th-field="*{links[0].instagram}"
+                                    class="mt-1 block w-full border-0 border-b-2 rounded-sm border-gray-300 shadow-sm bg-transparent appearance-none dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600" />
+
+                            </div>
+
+                        </div>
+
+                        <!-- About -->
+
+                        <div class="mb-4">
+
+                            <label for="about"
+                                class="block text-sm font-medium text-gray-700 dark:text-white">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                                About</label>
+                            <textarea id="about" data-th-utext="${contactDetail.about}" name="about"
+                                class="resize-none rounded-md mt-1 block w-full border-0 border-b-2 border-gray-300 shadow-sm focus:border-b-indigo-300 dark:bg-gray-800"></textarea>
+
+                            <p data-th-if="${#fields.hasErrors('about')}" data-th-errors="*{about}"
+                                class="mt-2 text-sm text-red-600 dark:text-red-500">
+                            </p>
+
+                        </div>
+
+
+                        <!-- Address -->
+
+                        <div class="mb-4">
+
+                            <label for="address"
+                                class="block text-sm font-medium text-gray-700 dark:text-white">
+                                <i class="fa-solid fa-location-dot"></i> Address</label>
+                            <textarea id="address" data-th-field="*{address}"
+                                class="resize-none rounded-md mt-1 block w-full border-0 border-b-2 border-gray-300 shadow-sm focus:border-b-indigo-300 dark:bg-gray-800"></textarea>
+
+                            <p data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}"
+                                class="mt-2 text-sm text-red-600 dark:text-red-500">
+                            </p>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label for="contactpic" class="block text-sm font-medium text-gray-700 dark:text-white">
+                                <i class="fa-regular fa-image"></i>
+                                Contact Pic</label>
+                            <img class="h-20 w-25"
+                                data-th-src="
+                            ${contactDetail.contactPic.length()} > 25 ? ${contactDetail.contactPic} : '../../'+${contactDetail.contactPic}"
+                                alt="profile pic">
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label for="image" class="block text-sm font-medium text-gray-700 dark:text-white">
+                                <i class="fa-regular fa-image"></i>
+                                Edit Image
+                                <span>only(.jpg, .png) ,size less than <th:block data-th-text="${@helper.getImageSize()}"></th:block>kb </span>
+                            </label>
+                            <input type="file" id="image" name="image"
+                                class="mt-1 block w-full text-gray-300 file:mr-4 file:py-2 file:px-4 bg-gray-200 rounded-md dark:bg-gray-600 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 hover:file:bg-indigo-100" />
+
+                            <p data-th-if="${#fields.hasErrors('image')}" data-th-errors="*{image}"
+                                class="mt-2 text-sm text-red-600 dark:text-red-500">
+                            </p>
+
+                        </div>
+
+                        <div class="mt-6">
+                            <button type="submit"
+                                class="w-full block bg-indigo-600 text-white py-2 px-4 rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Update Contact
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

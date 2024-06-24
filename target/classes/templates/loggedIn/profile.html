@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{loggedin/afterlogin :: loggedin(~{::#userProfileData},~{::title} , ~{})}">
+
+<head>
+    <title>User Profile</title>
+
+</head>
+
+<body class="bg-gray-100">
+    <div id="userProfileData">
+        <div class="grid grid-cols-12">
+            <div class="col-span-4  md:col-span-2  lg:col-span-3">
+
+            </div>
+
+            <div class=" col-span-12 md:col-span-8 md:mt-15 lg:col-span-6 ">
+                <!-- 6 space is get it -->
+                <!-- show Message From here -->
+
+                <div data-th-replace="~{message :: message-frag}"></div>
+
+                <div class="bg-gray-100 max-w-lg shadow-xl dark:bg-gray-800 rounded-lg p-3">
+                    <div class="bg-white dark:bg-gray-700 shadow-lg rounded-lg overflow-hidden mb-6">
+                        <div class="p-3 flex-col md:flex-row items-center">
+                            <div>
+
+                                <img class="h-24 w-24 rounded-full mr-4" th:src="@{${profile.profilePic}}"
+                                    alt="User Image">
+                            </div>
+                            <div>
+
+                                <form data-th-action="@{update-profile}" method="post">
+
+                                    <div class="flex flex-col">
+
+                                        <input type="hidden" name="user" data-th-value="${profile.userId}">
+
+                                        <span class="text-xl text-black mb-2 font-bold dark:text-white">
+                                            <i class="fa-regular fa-user"></i>
+                                            <span data-th-text="${profile.userName}"></span>
+                                        </span>
+
+                                        <span class="text-sm md:text-lg text-black mb-2 pl-1 md:pl-5 dark:text-gray-200">
+                                            <i class="fa-regular fa-envelope"></i>
+                                            <span data-th-text="${profile.userEmail}"></span>
+                                        </span>
+
+                                        <span class="text-sm md:text-lg text-black md:pl-2 pl-5 mb-3 dark:text-gray-200">
+                                            <i class="fa-solid fa-phone"></i>
+                                            <span
+                                                data-th-text="${profile.userNumber} ? ${profile.userNumber} : 'update-profile'"></span>
+                                        </span>
+
+                                        <button type="submit"
+                                            class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Edit
+                                            Profile</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                        <div class="bg-white shadow-lg rounded-lg overflow-hidden p-6 dark:bg-gray-600">
+                            <h3 class="text-xl font-bold text-black mb-4 dark:text-white">Saved Contacts</h3>
+                            <div class="flex items-center flex-col">
+                                <div class=" contact-ring" th:style="'background: conic-gradient(' + 'rgb(255, 111, 14) ' + 
+                    'calc(' + (1 / 1) + '* 360deg),' + 
+                    'blue 0' + ');'">
+                                    <div class="contact-ring-inner text-black dark:bg-gray-600 dark:text-gray-200"
+                                        data-th-text="${profile.contactList.size()}">100</div>
+                                </div>
+                            </div>
+                            <div class="mt-3 p-3">
+                                <p class="text-center text-gray-600 dark:text-gray-300">Total saved contacts</p>
+                            </div>
+
+                        </div>
+                        <div class="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-gray-600 p-6">
+                            <h3 class="text-xl font-bold text-black mb-4 dark:text-white">Favorite Contacts</h3>
+                            <div class="flex items-center flex-col">
+                                <div class="contact-ring" th:style="'background: conic-gradient(' + 'rgb(255, 111, 14) ' + 
+                                'calc(' + (${fev} / ( ${profile.contactList.size()} > 0 ? ${profile.contactList.size()} : 1) )+ '* 360deg),' + 
+                                'blue 0' + ');'">
+                                    <div class="contact-ring-inner bg-gray-100 dark:bg-gray-600" data-th-text="${fev}">0
+                                    </div>
+                                </div>
+                                <div class="p-3 mt-3">
+                                    <p class="text-center text-gray-600 dark:text-gray-200">Total favorite contacts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(() => {
+
+                $(".dashItem").removeClass("active_dash");
+                $("#profileLink").addClass("active_dash");
+                $("#profileLink1").addClass("active_dash");
+            });  
+        </script>
+    </div>
+</body>
+
+</html>

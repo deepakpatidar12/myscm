@@ -1,0 +1,76 @@
+
+#DataBase Configuration
+
+spring:
+  datasource:
+    username: root
+    password: Deepak@@12
+    url: jdbc:mysql://localhost:3306/scm2
+
+
+  main:
+     allow-circular-references: true
+# Jpa Configuration
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+
+
+# Thymeleaf COnfiguration
+
+  thymeleaf:
+    enable-spring-el-compiler: true
+    enabled: true
+    mode: HTML5
+    encoding: UTF-8
+    cache: false
+    
+
+
+
+# OAuth2 client Configuration
+
+# google configuration
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-name: google 
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope: profile,email
+
+
+#  GitHub Configuration           
+          
+          github:
+            client-name: github
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
+            scope: profile,email
+
+# Mail Configuration
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_SENDER_ID}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+# Multipart Configuration
+
+  servlet:
+    multipart:
+      enabled: true

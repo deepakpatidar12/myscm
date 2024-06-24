@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+    th:replace="~{beforelogin :: parent(~{::#contactData},~{::title} , ~{})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact-us</title>
+</head>
+
+<body class="dark:bg-black">
+
+    <div id="contactData">
+
+        <div class="grid grid-cols-12">
+
+            <div class="col-span-4   lg:col-span-2">
+
+            </div>
+
+            <div class=" mt-20 col-span-12  md:col-span-12 md:mt-15 lg:col-span-8 lg:mt-10">
+                <!-- 6 space is get it -->
+                <!-- show Message From here -->
+
+                <div data-th-replace="~{message :: message-frag}"></div>
+
+
+                <h1 class="text-4xl font-bold p-1">
+                    <i class="fa-solid fa-address-card"></i>
+                    Contact-US
+                </h1>
+
+                <div
+                    class="block p-2 w-full border-t-4 border-blue-700 rounded-lg shadow  bg-gray-300 dark:bg-gray-600 dark:border-blue-700 dark:hover:bg-gray-700">
+                    <div class="contact-info p-3">
+                        <p><strong>Company Name:</strong> SCM2 (Smart Contact Manager)</p>
+                        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                        <p><strong>Email:</strong> scm2@abccorp.com</p>
+                    </div>
+                    <h5 class="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Send Response...
+                    </h5>
+
+
+                    <form class=" w-full mx-auto mb-4" data-th-action="@{contactus}" data-th-method="post">
+
+                        <div class="grid md:grid-cols-2 md:gap-6">
+
+
+                            <div class="w-full flex flex-col justify-items-center">
+
+
+                                <div class="relative z-0 w-full mt-5 mb-5 group">
+
+
+                                    <input type="text" name="email"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder="" autofocus required />
+                                    <label for="email"
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                        <i class="fa-regular fa-envelope"></i>
+                                        <span> your email </span>
+                                    </label>
+
+
+                                </div>
+
+                                <div class="relative z-0 w-full mb-5 group">
+
+
+                                    <input type="number" name="mobile"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder="" required />
+                                    <label for="mobile"
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                        <i class="fa-solid fa-mobile"></i>
+                                        <span> mobile number </span>
+                                    </label>
+
+
+                                </div>
+
+                                <div class="relative z-0 w-full mb-5 group">
+
+
+                                    <textarea type="text" name="query"
+                                        class=" resize-none block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-400 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                        placeholder="" required></textarea>
+                                    <label for="query"
+                                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                        <i class="fa-solid fa-clipboard-question"></i>
+                                        <span> write your query or opnion </span>
+                                    </label>
+
+
+                                </div>
+
+                            </div>
+
+                            <div class="right w-full content-center">
+
+                                <span>If Any Query Or Any Suggestions for This Application So Please Contact My team
+                                    Or Submitted Your Response to the my team so we are solve this problem and
+                                    update our Application !</span>
+
+
+                                <div class="w-full flex gap-2 justify-center mt-5">
+                                    <button type="submit"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        click for send <i class="fa-solid fa-share"></i></button>
+                                    <button type="reset"
+                                        class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-500 dark:hover:bg-orange-600 dark:focus:ring-orange-300">
+                                        Reset <i class="fa-solid fa-rotate-right"></i></button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(() => {
+
+                $(".dashItem").removeClass("active_dash");
+                $("#feedLink").addClass("active_dash");
+            });  
+        </script>
+    </div>
+
+</body>
+
+</html>

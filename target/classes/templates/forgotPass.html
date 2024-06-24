@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="overflow-x-hidden" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+    <!-- Tailwind CSS CDN -->
+
+    <!-- tailwing Css  -->
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+
+    <!-- flowBite Css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+
+
+</head>
+
+<body class="mt-10 bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-center">Change Password</h2>
+        <form data-th-action="@{/scm2/change_Pass}" method="post">
+
+            <input type="hidden" name="email" data-th-value="${email}">
+            <input type="hidden" name="constent" data-th-value="${constent}">
+            <div class="mb-4">
+                <label class="block autofocus text-gray-700 text-sm font-bold mb-2" for="new-password">Enter New Password</label>
+                <input id="new-password" type="password" name="pass" placeholder="Enter new password"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="reenter-password">Re-enter New
+                    Password</label>
+                <input id="reenter-password" type="password" name="pass1" placeholder="Re-enter new password"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            </div>
+            <div class="flex items-center justify-between">
+                <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                    Change Password
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>

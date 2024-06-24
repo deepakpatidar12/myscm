@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{loggedin/afterlogin :: loggedin(~{::#contactDetailData},~{::title} , ~{})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contactDetail</title>
+</head>
+
+<body>
+
+    <div id="contactDetailData">
+
+        <div class="grid grid-cols-12">
+            <div class="col-span-4  md:col-span-2  lg:col-span-3">
+
+            </div>
+
+            <div class=" col-span-12  md:col-span-8 md:mt-15 lg:col-span-6 ">
+                <!-- 6 space is get it -->
+                <!-- show Message From here -->
+
+                <div data-th-replace="~{message :: message-frag}"></div>
+
+                <div
+                    class="w-full max-w-sm p-4 bg-white border-t-4 border-b-4 border-gray-700 rounded-lg  hover:bg-gray-100 shadow dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-500">
+                    <div class="flex justify-end px-4 pt-4">
+                        <button id="dropdownButton" data-dropdown-toggle="dropdown"
+                            class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                            type="button">
+                            <span class="sr-only">Open dropdown</span>
+                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 16 3">
+                                <path
+                                    d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+                            </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdown"
+                            class="z-10 hidden text-base list-none bg-gray-100 divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                            <ul class="py-2" aria-labelledby="dropdownButton">
+                                <li>
+                                    <!-- For Update Detail -->
+                                    <a
+                                        data-th-href="@{'update-contactDetail?page='+${currentPage}+
+                                    '&contact='+${contactDetail.contactId}+'&fromRes='+${fromRes}+'&element='+${element}}">
+
+                                        <button
+                                            class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                                            <i class="text-black dark:text-white fa-solid fa-pen-to-square"></i> <span
+                                                class="dark:hover:text-white"> Edit Information </span>
+                                        </button>
+
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <!-- For Delete Contact -->
+
+                                    <button type="submit"
+                                        class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:text-red-600 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-600 "
+                                        data-th-onclick="deletecontact([[${contactDetail.contactId}]] , [[${currentPage}]] , [[${fromRes}]] , [[${element}]] );">
+                                        <i class="text-red-700 fa-solid fa-trash"></i> <span
+                                            class="dark:hover:text-red-600"> Delete Contact </span>
+                                    </button>
+
+                                </li>
+                                <li>
+                                    <!-- for Make Favorite -->
+                                    <!-- <a class="text-left"
+                                        data-th-href="@{'unique-fev?page='+${currentPage}+
+                                    '&contact='+${contactDetail.contactId}+'&fromRes='+${fromRes}+'&element='+${element}}"> -->
+
+                                    <button type="submit"
+                                        class="w-full block text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                        data-th-onclick="makeFavoritecontact([[${contactDetail.contactId}]] , [[${currentPage}]] , [[${fromRes}]] , [[${element}]] , [[${contactDetail.favorite}]] , [[unique]])">
+
+                                        <i data-th-classappend="${contactDetail.favorite} ? text-yellow-400"
+                                            class="fa-solid fa-bookmark"></i>
+                                        <span
+                                            data-th-text="${contactDetail.favorite} ? 'Drop Favorite' : 'Make Favorite'"
+                                            class="dark:hover:text-yellow-400"></span>
+                                    </button>
+
+                                    <!-- </a> -->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center pb-5">
+                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                            data-th-src="
+                        ${contactDetail.contactPic.length()} > 25 ? ${contactDetail.contactPic} : '../../'+${contactDetail.contactPic}" alt="user image" />
+                        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                            <i class="fa-regular fa-envelope"></i>
+                            <span data-th-text="${contactDetail.contactEmail}"></span>
+                        </h5>
+
+                        <span class="text-sm text-gray-500 dark:text-gray-400">
+                            <i class="fa-regular fa-user"></i>
+                            <span data-th-text="${contactDetail.name}"> </span> (<span
+                                data-th-text="${contactDetail.nickName}"></span>)
+                        </span>
+
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="w-2/3">
+
+                            <h5> <i class="fa-solid fa-arrow-right"></i>
+                                contact info</h5>
+                            <h4 class="pl-3 pb-5 text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fa-solid fa-phone"></i>
+                                <span> +91- <span data-th-text="${contactDetail.contactNumber}"></span></span>
+                            </h4>
+
+                            <h5> <i class="fa-solid fa-arrow-right"></i>
+                                Address</h5>
+                            <h4 class="pl-3 pb-5 text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span data-th-text="${contactDetail.address}"> </span>
+                            </h4>
+
+                            <h5> <i class="fa-solid fa-arrow-right"></i>
+                                About Contact</h5>
+                            <h4 class="pl-3 pb-5 text-sm text-gray-500 dark:text-gray-400">
+                                <i class="fa-solid fa-address-card"></i>
+                                <span class="inline-block" data-th-utext="${contactDetail.about}"></span>
+                            </h4>
+
+                            <div data-th-if="${contactDetail.links.size()}>0">
+                                <h5> <i class="fa-solid fa-arrow-right"></i>
+                                    instagram</h5>
+                                <h4 class="pl-3 pb-5 text-sm text-gray-500 dark:text-gray-400">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <a class="hover:text-blue-700 hover:underline"
+                                        data-th-href="${contactDetail.links.get(0).instagram} ? ${contactDetail.links.get(0).instagram} : 'www.instagram.com'">
+                                        visit instagram profile</a>
+                                </h4>
+                            </div>
+                            <div data-th-if="${contactDetail.links.size()}>0">
+
+                                <h5> <i class="fa-solid fa-arrow-right"></i>
+                                    linked-In</h5>
+                                <h4 class="pl-3 pb-5 text-sm text-gray-500 dark:text-gray-400">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                    <a class="hover:text-blue-700 hover:underline"
+                                        data-th-href="${contactDetail.links.get(0).linkedIn} ? ${contactDetail.links.get(0).linkedIn} : 'www.instagram.com'">
+                                        visit linked-in profile </a>
+                                </h4>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="flex mt-4 justify-center md:mt-6">
+                        <a href="#"
+                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Call</a>
+                        <a data-th-href="@{'compose?page='+${currentPage}+'&contact='
+                            +${contactDetail.contactId}+'&fromRes='+${fromRes}+'&element='+${element}}">
+                            <button type="submit"
+                                class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                                Compose Mail </button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div data-th-unless="${contactDetail.favorite}">
+
+                <script>
+                    $(document).ready(() => {
+
+                        $(".dashItem").removeClass("active_dash");
+                        $("#viewLink").addClass("active_dash");
+                    });  
+                </script>
+            </div>
+
+            <div data-th-if="${contactDetail.favorite}">
+                <script>
+                    $(document).ready(() => {
+
+                        $(".dashItem").removeClass("active_dash");
+                        $("#favLink").addClass("active_dash");
+                    });  
+                </script>
+
+
+            </div>
+
+            <script data-th-src="@{'/js/singleDelete.js'}"></script>
+            <script data-th-src="@{'/js/makeFavorite.js'}"></script>
+        </div>
+    </div>
+
+</body>
+
+</html>

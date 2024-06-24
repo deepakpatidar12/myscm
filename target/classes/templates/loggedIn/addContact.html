@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+    data-th-replace="~{loggedin/afterlogin :: loggedin(~{::#addContactData},~{::title} , ~{})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add-contact</title>
+</head>
+
+<body>
+
+
+    <div id="addContactData">
+
+        <div class="grid grid-cols-12">
+
+            <div class="col-span-4  md:col-span-2  lg:col-span-3">
+
+            </div>
+
+
+            <div class=" col-span-12  md:col-span-8 md:mt-15 lg:col-span-6 ">
+                <!-- 6 space is get it -->
+                <!-- show Message From here -->
+
+                <div data-th-replace="~{message :: message-frag}"></div>
+
+
+                <div
+                    class="block p-6 bg-white border-t-4 border-b-4 hover:border-gray-500 rounded-lg hover:shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-blue-700 dark:hover:bg-gray-700">
+
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Add New Contact
+                    </h5>
+                    <p class="font-normal mb-3 text-gray-500 dark:text-gray-400">
+
+                        adding new contact from here
+                    </p>
+
+
+                    <form class="mb-3" data-th-action="@{'doadd-contact'}" method="post" data-th-object="${contactForm}"
+                        novalidate enctype="multipart/form-data">
+
+                        <div class="grid md:grid-cols-2 md:gap-6">
+
+                            <!-- name -->
+
+                            <div class="relative z-0 w-full mb-5 group">
+
+
+                                <input type="text" data-th-field="*{name}"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder="" autofocus required />
+                                <label for="name"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    <i class="fa-regular fa-user"></i>
+                                    <span> Contact name </span>
+                                </label>
+
+                                <p data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"
+                                    class="mt-2 text-sm text-red-600 dark:text-red-500">
+                                </p>
+                            </div>
+
+                            <!-- nickname -->
+                            <div class="relative z-0 w-full mb-5 group">
+
+
+                                <input type="text" data-th-field="*{nickName}"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required placeholder="" />
+                                <label for="nickname"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    <i class="fa-solid fa-signature"></i>
+                                    <span> nickname </span>
+                                </label>
+                            </div>
+
+                        </div>
+                        <!-- Mobile Number -->
+                        <div class="mb-2">
+
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="number" data-th-field="*{contactNumber}"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" " required />
+                                <label for="mobile"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    <i class="fa-solid fa-mobile"></i>
+                                    <span> contact number (123-456-7894) </span>
+                                </label>
+                                <p data-th-if="${#fields.hasErrors('contactNumber')}" data-th-errors="*{contactNumber}"
+                                    class="mt-2 text-sm text-red-600 dark:text-red-500">
+                                </p>
+                            </div>
+
+
+
+                        </div>
+
+                        <!-- email -->
+                        <div class="mb-2">
+
+
+                            <div class="relative z-0 w-full mb-5 group">
+                                <input type="email" data-th-field="*{contactEmail}"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder=" " required />
+                                <label for="email"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>Email (contact@gmail.com)</span>
+                                </label>
+                                <p data-th-if="${#fields.hasErrors('contactEmail')}" data-th-errors="*{contactEmail}"
+                                    class="mt-2 text-sm text-red-600 dark:text-red-500">
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+
+                        <div class="grid md:grid-cols-2 md:gap-6">
+
+                            <!-- instagram -->
+                            <div class="relative z-0 w-full mb-5 group">
+
+                                <input type="text" data-th-field="*{links[0].instagram}"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    placeholder="" autofocus required />
+                                <label for="name"
+                                    class=" w-full peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    <i class="fa-brands fa-instagram"></i>
+                                    <span> https://www.instagram.com </span>
+                                </label>
+                            </div>
+
+                            <!-- linked-in -->
+                            <div class="relative z-0 w-full mb-5 group">
+
+                                <input type="text" data-th-field="*{links[0].linkedIn}"
+                                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                    required placeholder="" />
+                                <label for="linkedIn"
+                                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                    <i class="fa-brands fa-linkedin"></i>
+                                    <span> https://in.linkedin.com/john </span>
+                                </label>
+                            </div>
+
+                        </div>
+                        <!-- about -->
+
+                        <div class="mb-5">
+                            <div class="relative z-0 w-full mb-5 group">
+
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="file_input">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                    <span>write somthing about your contact</span>
+                                </label>
+
+                                <textarea rows="4" data-th-field="*{about}"
+                                    class="textarea-special resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="write something about your contact.."></textarea>
+
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="mb-5">
+                            <div class="relative z-0 w-full mb-5 group">
+
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                    for="file_input">
+                                    <i class="fa-solid fa-location-crosshairs"></i>
+                                    <span>address of the contact</span>
+                                </label>
+
+                                <textarea rows="2" data-th-field="*{address}"
+                                    class="resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="write address of your contact.."></textarea>
+
+                                <p data-th-if="${#fields.hasErrors('address')}" data-th-errors="*{address}"
+                                    class="mt-2 text-sm text-red-600 dark:text-red-500">
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Image -->
+
+                        <div class="relative z-0 w-full mb-5 group">
+
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                for="file_input">
+                                <i class="fa-regular fa-image"></i>
+                                <span>only(.jpg, .png) ,size less than <th:block data-th-text="${@helper.getImageSize()}"></th:block>kb </span>
+                            </label>
+                            <input type="file" data-th-field="*{image}"
+                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50
+                                 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
+
+                            <p data-th-if="${#fields.hasErrors('image')}" data-th-errors="*{image}"
+                                class="mt-2 text-sm text-red-600 dark:text-red-500">
+                            </p>
+                        </div>
+
+                        <!-- buttons -->
+
+                        <div class="mb-2 flex gap-2 justify-center">
+                            <button type="submit"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+                                Add-Contact</button>
+                            <button type="reset"
+                                class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-500 dark:hover:bg-orange-600 dark:focus:ring-orange-300">Reset</button>
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+        <script src="https://cdn.tiny.cloud/1/ihm09xsqojr0wubyc0vwkousmgh2flkga5ftps3urc0r8es3/tinymce/6/tinymce.min.js"
+            referrerpolicy="origin"></script>
+        <script>
+            tinymce.init({
+                selector: 'textarea#about',
+                height: 250,
+                toolbar: 'undo redo | styles | bold italic ',
+                plugins: [
+                     'searchreplace', 'wordcount',
+                ],
+                content_css: '/css/style.css',
+            });
+
+            $(document).ready(() => {
+
+                $(".dashItem").removeClass("active_dash");
+                $("#addLink").addClass("active_dash");
+            });  
+        </script>
+
+    </div>
+
+
+</body>
+
+</html>

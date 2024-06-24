@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{beforelogin :: parent(~{::#homedata},~{::title} , ~{})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+
+    <div id="homedata" class="mt-10">
+
+        <div class=" mt-10 grid grid-cols-12">
+
+            <div class=" mt-5 col-span-1">
+
+            </div>
+
+            <div class="col-span-10 mt-5">
+
+                <div class="flex w-full mt-5 flex-col md:flex-row justify-between content-center">
+
+                    <div class="w-full content p-1">
+
+                        <p class=" font-semibold md:text-4xl mt-10 text-xl">
+                            Easy to manage your all contact at one place by using
+                            <span class="text-orange-500"> SCM </span>
+                            (Smart Contact Manager). you can add the contact and manage them
+                            to make favorite, edit and delete the contact.
+                            <br>
+                            You can easy to access there all contacts from any where by the
+                            help of the internet.
+                        </p>
+
+
+
+                    </div>
+
+
+
+                    <div class="mt-10 max-w-64 md:mt-5 w-50 signin">
+                        <div class="content-center items-center bg-gray-200 dark:bg-gray-700 px-5 py-1 rounded-md">
+
+                            <h1 class=" mt-5 text-4xl "> Sign-in </h1>
+                            <p>if your email is verified you can signin here</p>
+                            <form class="max-w-sm mx-auto mb-4 py-2 px-4" data-th-action="@{/dosignin}"
+                                data-th-method="post">
+                                <div class="mb-2">
+
+                                    <!-- email -->
+                                    <div class="mb-2">
+                                        <div class="relative z-0 w-full mb-5 group">
+                                            <input type="email" name="userEmail"
+                                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                                placeholder=" " required />
+                                            <label for="email"
+                                                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                                <i class="fa-solid fa-envelope"></i>
+                                                <span>registered email</span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="relative z-0 w-full mb-5 group">
+                                        <input type="password" name="password"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                                            placeholder=" " required />
+                                        <label for="mobile"
+                                            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                                            <i class="fa-solid fa-lock"></i>
+                                            <span> password </span>
+                                        </label>
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="buttons flex  gap-2 justify-center">
+                                    <button type="submit"
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">SignIn</button>
+                                    <button type="reset"
+                                        class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-orange-500 dark:hover:bg-orange-600 dark:focus:ring-orange-800">Reset</button>
+                                </div>
+
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <p
+                    class="mt-2 p-3  md:text-4xl text-lg font-semibold w-fit border-2 hover:text-black border-black rounded-lg bg-orange-400">
+                   <a data-th-href="@{/scm2/signin}">
+                    Get Started from here
+                    <i class="rounded-full p-2 bg-white text-black fa-solid fa-arrow-right"></i></a>
+                </p>
+
+                <h1 class="text-3xl w-full text-left mt-2">Features</h1>
+                <div class="flex md:flex-row mt-5 flex-col items-center gap-5 mb-10">
+
+                    <div class="w-full">
+
+                        <div class="p-4 h-fit w-fit mt-3 bg-gray-200 dark:bg-gray-700 rounded-xl text-center">
+
+                            <h1 class="text-2xl">features of SCM</h1>
+                            <div class="p-4 flex gap-5 flex-col justify-around content-center items-center">
+
+                                <div class="flex flex-row gap-5">
+
+                                    <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-3 rounded-lg text-5xl">
+                                        <i class=" text-blue-500 fa-solid fa-user-plus"></i>
+                                    </div>
+                                    <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-3 rounded-lg text-5xl">
+                                        <i class="text-red-500 fa-solid fa-trash"></i>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-row gap-5">
+
+                                    <div
+                                        class="bg-gray-400 hover:bg-white dark:bg-gray-600  py-3 px-4 rounded-lg text-5xl">
+                                        <i class=" text-yellow-400 fa-solid fa-bookmark"></i>
+                                    </div>
+                                    <div
+                                        class="bg-gray-400 dark:bg-gray-600 hover:bg-white py-3 px-3 ml-2 rounded-lg  text-5xl">
+                                        <i class=" text-gray-200 fa-solid fa-pen-to-square"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="content2 md:text-4xl text-xl">
+                        There are the key features of the SCM to using this features to
+                        add the contacts and manupulate the contacts such as delete, edit and update
+                        the contacts and also share the file or stablished conversation between contacts
+                        by the help of mailing support.
+                    </div>
+
+                </div>
+                <hr class="pt-1 bg-gray-800 text-gray-600">
+
+                <div class="mt-3 flex flex-col gap-2 md:flex-row justify-between items-center content-center pb-20">
+
+                    <img class="text-center border-2 h-20 w-fit mylogo rounded-md"
+                        data-th-src="@{'../img/whitescm.png'}" alt="Logo">
+
+                    <div class="flex p-3 border-2 rounded-md items-center justify-center bg-white">
+
+                        <p class="text-2xl text-center text-black">SmartContactManager.in</p>
+
+                    </div>
+
+                    <div class="flex p-3 border-2 rounded-md items-center justify-center bg-white">
+
+                        <p class="text-2xl text-center text-black">SCM@gmail.com</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

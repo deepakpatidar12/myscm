@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+    th:replace="~{beforelogin :: parent(~{::#contactData},~{::title} , ~{})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about</title>
+</head>
+
+<body class="dark:bg-black ">
+
+    <div id="contactData">
+
+        <div class="grid grid-cols-12 text-gray-700 dark:text-gray-100">
+
+            <div class="col-span-1 lg:col-span-1">
+
+            </div>
+
+            <div class=" mt-20 col-span-12  md:col-span-12 md:mt-15 lg:col-span-10 lg:mt-10">
+                <!-- 6 space is get it -->
+                <!-- show Message From here -->
+
+                <div data-th-replace="~{message :: message-frag}"></div>
+
+
+                <p class="text-4xl font-extrabold py-2">
+                    About-US
+                </p>
+
+                <div class="pb-20 pl-2">
+
+                    <h2 class="text-2xl font-bold">Company Stablishment</h2>
+                    <p class="pl-2 text-xl font-semibold pb-5">
+                        SCM are Stablished in The end of The july 2024 This Are Developed By Deepak Patidar. for the
+                        Vision to develop SCM when the user are connect to each other by using this and also provide
+                        the facility to add the contact and manage them easily.
+                    </p>
+
+                    <hr class="pt-1 bg-gray-800 text-gray-600">
+
+                    <h2 class="text-2xl font-bold">Vision And Mission</h2>
+                    <p class="pl-2 text-xl font-semibold pb-5">
+                        Our Vision is to easy manage the all contact at the one place we are also provide the facility
+                        to
+                        manage the
+                        contacts on the cloud.
+                    </p>
+
+                    <hr class="pt-1 bg-gray-800 text-gray-600">
+
+                    <div class="flex flex-col md:flex-row justify-between content-center items-center">
+
+                        <div class="pl-2">
+                            <h2 class="text-2xl font-bold">features of SCM</h2>
+
+                            <p class="text-xl font-semibold">
+                                <i class=" text-xs fa-solid fa-circle"></i> User can add the contacts <i
+                                    class="text-blue-400 fa-solid fa-user-plus"></i>
+                            </p>
+                            <p class="pl-6 pb-2">You can add contact by using SCM and also write to the information of
+                                the
+                                contact.
+                                this are provide to the facility you can access this contact anytime by using the
+                                internet.
+                            </p>
+
+                            <p class="text-xl font-semibold">
+                                <i class=" text-xs fa-solid fa-circle"></i> User can Make our contact to favorite <i
+                                    class="text-yellow-400 fa-solid fa-bookmark"></i>
+                            </p>
+                            <p class="pl-6 pb-2">Also have a facility to add the contact in the favorite contact list.
+                                and access this list easily by using the internet in SCM.
+                            </p>
+                            <p class="text-xl font-semibold">
+
+                                <i class=" text-xs fa-solid fa-circle"></i> User can delete the contacts <i
+                                    class="text-red-600 fa-solid fa-trash"></i>
+                            </p>
+                            <p class="pl-6 pb-2"> SCM is also provide the feature to delete the contacts where you are
+                                not need
+                                this.
+                                In the future version of the SCM we are also provide the facility to backup the deleted
+                                contact
+                                currentely it is not possible.
+                            </p>
+                            <p class="text-xl font-semibold">
+                                <i class=" text-xs fa-solid fa-circle"></i> User can update the detail of the contact <i
+                                    class="text-gray-500 fa-solid fa-pen"></i>
+                            </p>
+                            <p class="pl-6 pb-2"> SCM is provide the facility to add the contact and also edit the
+                                information of
+                                the
+                                contact,
+                                you can also edit the profile picture, and social media links of the contact.
+                            </p>
+                            <p class="text-xl font-semibold ">
+                                <i class=" text-xs fa-solid fa-circle"></i> User can send the email to its saved contact
+                                <i class="text-blue-700 fa-solid fa-envelope"></i>
+                            </p>
+                            <p class="pb-5 pl-5"> SCM is provide to the facility the user are also stablished to the
+                                convertation with the
+                                contacts
+                                by using the mail.
+                            </p>
+                        </div>
+
+                        <div>
+                            <div class="w-full">
+
+                                <div class="p-4 h-fit w-fit mt-3 bg-gray-200 dark:bg-gray-700 rounded-xl text-center">
+        
+                                    <h1 class="text-2xl">features of SCM</h1>
+                                    <div class="p-4 flex gap-5 flex-col justify-around content-center items-center">
+        
+                                        <div class="flex flex-row gap-5">
+        
+                                            <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-3 rounded-lg text-5xl">
+                                                <i class=" text-blue-500 fa-solid fa-user-plus"></i>
+                                            </div>
+                                            <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-3 rounded-lg text-5xl">
+                                                <i class="text-red-500 fa-solid fa-trash"></i>
+                                            </div>
+                                        </div>
+        
+                                        <div class="flex flex-row gap-5">
+        
+                                            <div
+                                                class="bg-gray-400 hover:bg-white dark:bg-gray-600  py-3 px-4 rounded-lg text-5xl">
+                                                <i class=" text-yellow-400 fa-solid fa-bookmark"></i>
+                                            </div>
+                                            <div
+                                                class="bg-gray-400 dark:bg-gray-600 hover:bg-white py-3 px-3 ml-2 rounded-lg  text-5xl">
+                                                <i class=" text-gray-200 fa-solid fa-pen-to-square"></i>
+                                            </div>
+                                        </div>
+        
+                                    </div>
+        
+                                </div>
+                            </div>
+        
+                        </div>
+
+                    </div>
+
+                    <hr class="pt-1 bg-gray-800 text-gray-600">
+
+                    <h2 class="text-2xl font-bold">Services</h2>
+                    <div class="flex md:flex-row flex-col gap-5 justify-between">
+                    <p class=" pl-2 pb-5 text-xl font-semibold">
+                        SCM is provide to the multiple services to the client the client means is User ,
+                        Client is add the contact with its detail such as email , mobile number , picture of contact
+                        holder,
+                        and also the location and some other social media links (instagram and linkedin) , this are help
+                        for
+                        directely conttect with the contacts and also write to the about of the contact.
+
+                        client is also delete the contact make favorite and also update the detail any time.
+                        and there are also provide to the facility to access this all contact any time.
+                    </p>
+                    <div>
+                        <img class="picture" data-th-src="@{../img/picture1.png}" alt="service">
+                    </div>
+                </div>
+                    <hr class="pt-1 bg-gray-800 text-gray-600">
+                    <h2 class="text-2xl font-bold">Privacy & Security</h2>
+                    <p class=" pl-2 text-xl pb-5 font-semibold">
+                        SCM is provide to the privacy and security feature that helps to the client data is
+                        safe and secure there are also need to the authentication of the client and also need to the
+                        email verifaction that helps to the client data is safe and secured and customer privacy are
+                        managed. </p>
+
+                    <hr class="pt-1 bg-gray-800 text-gray-600">
+                </div>
+
+                <div class="flex flex-col gap-2 md:flex-row justify-between items-center content-center pb-20">
+
+                    <img class="text-center border-2 h-20 w-fit mylogo rounded-md" data-th-src="@{'../img/whitescm.png'}" alt="Logo">
+
+                    <div class="flex p-3 border-2 rounded-md items-center justify-center bg-white">
+
+                        <p class="text-2xl text-center text-black">SmartContactManager.in</p>
+
+                    </div>
+
+                    <div class="flex p-3 border-2 rounded-md items-center justify-center bg-white">
+
+                        <p class="text-2xl text-center text-black">SCM@gmail.com</p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

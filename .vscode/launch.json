@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SmartContactManagerApplication<scm2>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.myScm.scm.SmartContactManagerApplication",
+            "projectName": "scm2",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
