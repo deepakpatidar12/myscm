@@ -2,7 +2,7 @@
 const selectedIds = JSON.parse(localStorage.getItem('selectedIds')) || [];
 const selectedDataDiv = document.getElementById('dropdownActionButton');
 
-if(selectedIds.length > 0){
+if (selectedIds.length > 0) {
     selectedDataDiv.classList.remove('invisible');
 }
 
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.classList.add('selected');
                 if (!selectedIds.includes(contactId)) {
                     selectedIds.push(contactId);
-                    
+
                 }
             } else {
                 row.classList.remove('selected');
@@ -71,97 +71,154 @@ document.addEventListener('DOMContentLoaded', () => {
 // Send data to backend
 function exportPDF() {
 
-    fetch('/api/generate-pdf', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(processDataIntoArray(selectedIds))
-    })
-        .then(response => {
-            // Check if response is successful
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            // Extract filename from content-disposition header
-            const filename = response.headers.get('Content-Disposition').split('filename=')[1];
 
-            // Return blob response
-            return response.blob().then(blob => {
-                // Create object URL for blob
-                const url = window.URL.createObjectURL(blob);
+    Swal.fire({
+        title: 'Generating PDF...',
+        html: '<i class="fas fa-file-pdf" style="font-size: 4rem; color: red;"></i>',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+            Swal.showLoading();
 
-                // Create anchor element for download
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
+            // Fetch the PDF generation status from the backend
+            fetch('/api/generate-pdf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(processDataIntoArray(selectedIds))
+            })
+                .then(response => {
+                    // Check if response is successful
+                    if (response.ok) {
 
-                // Trigger click event on anchor element
-                a.click();
+                        const filename = response.headers.get('Content-Disposition').split('filename=')[1];
 
-                // Clean up
-                window.URL.revokeObjectURL(url);
-                document.body.removeChild(a);
-                localStorage.removeItem("selectedIds");
-                window.location.reload();
+                        return response.blob().then(blob => {
+                            // Create object URL for blob
+                            const url = window.URL.createObjectURL(blob);
 
-            });
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'PDF Generated',
+                                text: 'Your PDF has been generated successfully!',
+                                confirmButtonText: 'Download'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    const a = document.createElement('a');
+                                    a.href = url;
+                                    a.download = filename;
+                                    document.body.appendChild(a);
+                                    a.click();
+                                    window.URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+                                    // Clean up
+                                    localStorage.removeItem("selectedIds");
+                                    window.location.reload();
+                                }
+                            });
+
+
+                        });
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'There was an error generating the PDF. Please try again.',
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'There was an error communicating with the server. Please try again.',
+                    });
+                });
+        }
+    });
 }
 
 // Export Excel file
 
 function exportExcel() {
 
-    fetch('/api/generate-excel', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(processDataIntoArray(selectedIds))
-    })
-        .then(response => {
-            // Check if response is successful
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            // Extract filename from content-disposition header
-            const filename = response.headers.get('Content-Disposition').split('filename=')[1];
+    Swal.fire({
+        title: 'Generating Excel...',
+        html: '<i class="fas fa-file-excel" style="font-size: 4rem; color: green;"></i>',
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+            Swal.showLoading();
 
-            // Return blob response
-            return response.blob().then(blob => {
-                // Create object URL for blob
-                const url = window.URL.createObjectURL(blob);
+            // Fetch the Excel generation status from the backend
 
-                // Create anchor element for download
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = filename;
-                document.body.appendChild(a);
+            fetch('/api/generate-excel', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(processDataIntoArray(selectedIds))
+            })
+                .then(response => {
+                    // Check if response is successful
+                    if (response.ok) {
 
-                // Trigger click event on anchor element
-                a.click();
+                        // Extract filename from content-disposition header
+                        const filename = response.headers.get('Content-Disposition').split('filename=')[1];
 
-                // Clean up
-                window.URL.revokeObjectURL(url);
-                document.body.removeChild(a);
-                localStorage.removeItem("selectedIds");
-                window.location.reload();
-            });
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
+                        // Return blob response
+                        return response.blob().then(blob => {
+                            // Create object URL for blob
+                            const url = window.URL.createObjectURL(blob);
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Excel Generated',
+                                text: 'Your Excel file has been generated successfully!',
+                                confirmButtonText: 'Download'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    const a = document.createElement('a');
+                                    a.href = url;
+                                    a.download = filename;
+                                    document.body.appendChild(a);
+                                    a.click();
+
+                                    // Clean up
+                                    window.URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+                                    localStorage.removeItem("selectedIds");
+                                    window.location.reload();
+                                }
+                            });
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'There was an error generating the Excel file. Please try again.',
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'There was an error communicating with the server. Please try again.',
+                    });
+                });
+        }
+    });
 }
 
 
 //  for view the action Bar
 document.addEventListener('DOMContentLoaded', () => {
- 
+
     const checkboxes = document.querySelectorAll('.checkbox-table');
 
     checkboxes.forEach(checkbox => {
