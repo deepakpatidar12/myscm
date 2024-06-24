@@ -1,3 +1,61 @@
-body{
+body {
     background-color: #afafaf;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+textarea {
+    resize: none;
+}
+
+.contact-ring {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+}
+
+.contact-ring-inner {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+
+/* For Active */
+
+.active_dash {
+    background-color: #757575;
+
+}
+
+.active_dash:hover {
+    background-color: #949494;
+}
+
+.active_dash i {
+    color: black;
+}
+
+.active_dash svg {
+    color: black;
+}
+
+/* Nav bar links */
+
+.active-nav{
+    color: #079cf3;
 }

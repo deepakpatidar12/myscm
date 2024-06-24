@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Internal Server Error</title>
+    <title>Error</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Internal Server Error</h1>
-    <p th:text="${error}"></p>
-    <p>The error occurred at: <span th:text="${url}"></span></p>
-    <a th:href="@{/scm2/user/dashboard}">Go to Dashboard</a>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="bg-white shadow-md rounded-lg p-8 max-w-screen-xl h-fit mx-auto">
+        <p class="text-xl text-gray-700">INTERNAL_SERVER_ERROR</p>
+        <p class="text-2xl text-gray-700">Unexpected situation privented!!</p>
+        <h1 class="text-4xl font-bold text-red-500 mb-4">Error!!</h1>
+        <p class="text-2xl text-gray-700"> Status Code : 500 </p>
+        <p class="text-lg text-gray-500 mt-2">Sorry for the inconvinence for this please try again later some time!!</p>
+        <a href="/scm2/home" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Go to Home</a>
+    </div>
 </body>
 </html>

@@ -64,7 +64,6 @@ function deletecontact(cid, page, fromRes, element, from, searchValue, searchFie
                         if (from != null && from !== "") {
 
                             if (from.toLowerCase() === "search" && element > 1) {
-                                console.log(fromRes);
                                 window.location.replace(`${baseUrl}scm2/user/search?searchField=${searchField}&fromRes=${fromRes}&fieldValue=${searchValue}`)
                             }
                         } else {

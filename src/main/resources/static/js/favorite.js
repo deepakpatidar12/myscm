@@ -28,9 +28,7 @@ function favoriteContacts(id) {
     })
         .then(response => {
 
-            console.log("hello 1 ")
             if (response.ok) {
-                console.log("hello 2")
 
                 // Show success alert with bookmark icon
                 Swal.fire({
