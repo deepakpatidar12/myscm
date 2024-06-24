@@ -3,8 +3,7 @@ package com.myScm.scm.configuration;
 import java.io.IOException;
 import java.util.UUID;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,7 +31,6 @@ public class Auth2SuccessHandler implements AuthenticationSuccessHandler {
     public Auth2SuccessHandler() {
     }
 
-    Logger logger = LoggerFactory.getLogger(Auth2SuccessHandler.class);
 
     @SuppressWarnings("null")
     @Override
@@ -95,7 +93,6 @@ public class Auth2SuccessHandler implements AuthenticationSuccessHandler {
             newUser.setUserName("name");
 
         } else {
-            logger.info("onAuthenticationSuccess : Unknown Provider");
         }
 
         
