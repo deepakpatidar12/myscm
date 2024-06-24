@@ -9,6 +9,8 @@ import com.myScm.scm.Dto.ContactForm;
 import com.myScm.scm.Dto.UserForm;
 import com.myScm.scm.entities.Contact;
 import com.myScm.scm.entities.User;
+import com.myScm.scm.errorHandler.ResourceNotFoundException;
+
 import  java.util.List;
 import  java.util.Arrays;
 
@@ -73,8 +75,7 @@ public class Helper {
                     .getSession();
             session.removeAttribute("message");
         } catch (Exception e) {
-            System.out.println(e);
-            e.printStackTrace();
+            throw new ResourceNotFoundException("We are not able to find the resources!!");
         }
     }
 

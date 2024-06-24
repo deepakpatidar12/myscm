@@ -89,14 +89,27 @@ public class HomeController {
     }
 
     @GetMapping("/signin")
-    public String goSigninPage() {
+    public String goSigninPage(Authentication authentication, Model model) {
 
+        if (authentication != null) {
+
+            UserForm user = this.serviceImple
+                    .getUserFormByUser(this.serviceImple.getUserByUsername(authentication.getName()));
+            model.addAttribute("user", user);
+        }
  
         return new String("signin");
     }
 
     @GetMapping("/signup")
-    public String goSignUpPage(Model model) {
+    public String goSignUpPage(Authentication authentication, Model model) {
+
+        if (authentication != null) {
+
+            UserForm user = this.serviceImple
+                    .getUserFormByUser(this.serviceImple.getUserByUsername(authentication.getName()));
+            model.addAttribute("user", user);
+        }
 
         model.addAttribute("userForm", new UserForm());
         return "signup";
@@ -196,9 +209,6 @@ public class HomeController {
     public String goChangePassPage(Model model, @PathVariable("changeUrl") String constent,
             @RequestParam(name = "email") String email) {
 
-        System.out.println("The String constent is : " + constent);
-        System.out.println("The String Email is : " + email);
-
         model.addAttribute("constent", constent);
         model.addAttribute("email", email);
 
@@ -210,12 +220,8 @@ public class HomeController {
             @RequestParam(name = "email") String email, @RequestParam("constent") String constent,
             @RequestParam(name = "pass") String newPass1, @RequestParam(name = "pass1") String newPass2) {
 
-        System.out.println("\n\n\n constent is : " + constent);
-        System.out.println("my constent is : " + AppConstants.CHANGE_URL);
-        System.out.println("Email is : " + email);
         this.user = this.serviceImple.getUserByUsername(email);
 
-        System.out.println("The name is : " + this.user.getUserName() + "\n\n\n");
         if (this.user != null && AppConstants.CHANGE_URL.equals(constent)) {
 
             httpSession.setAttribute("message", this.serviceImple.forgotChangePass(user, newPass1, newPass2));

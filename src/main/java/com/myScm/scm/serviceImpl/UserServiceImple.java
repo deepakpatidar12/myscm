@@ -390,6 +390,9 @@ public class UserServiceImple implements userServices {
                 user.setPassword(this.encoder.encode(newpass2));
                 this.userRepo.save(user);
                 return new Message("password change successfull", MessageType.blue);
+            } else if (!newpass1.equals(newpass2)) {
+
+                return new Message("Both Password does't match !!", MessageType.red);
             }
             return new Message("INTERNAL_SERVER_ERROR try again later !!", MessageType.red);
 

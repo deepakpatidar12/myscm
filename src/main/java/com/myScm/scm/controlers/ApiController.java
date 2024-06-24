@@ -73,7 +73,6 @@ public class ApiController {
             @SuppressWarnings("unchecked")
             ArrayList<String> arr = (ArrayList<String>) contactList.get("contacts");
 
-            System.out.println(arr);
             this.contactServiceImpl.makeFavoriteByIds(this.user, arr);
 
             return ResponseEntity.ok().body("Items added to favorites successfully");
