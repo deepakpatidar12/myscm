@@ -9,135 +9,137 @@
 
 <body>
 
-  <div class="m-5" id="dashboardData">
+  <div class="mt-5" id="dashboardData">
 
-    <div>
-
-      <h1 class="text-xl "> Welcome - <span data-th-text="${user.userName}"></span>
-
-      </h1>
-
-      <div class=" m-2 flex flex-col md:flex-row justify-between items-center ">
-
+    <div class="bg-gray-200 dark:bg-gray-800 p-8 md:5 rounded-md shadow-lg shadow-zinc-700">
         <div>
 
-          <form class="md:mt-0 flex flex-row" data-th-action="@{'/scm2/user/search'}" method="get">
+        <h1 class="text-xl "> Welcome - <span data-th-text="${user.userName}"></span>
 
-            <select name="searchField" class="md:w-fit w-3 border-e-2 border-blue-700 text-gray-800 dark:text-white bg-gray-200 dark:bg-gray-700 rounded-s-md
+        </h1>
+
+        <div class=" m-2 flex flex-col md:flex-row justify-between items-center ">
+
+          <div>
+
+            <form class="md:mt-0 flex flex-row" data-th-action="@{'/scm2/user/search'}" method="get">
+
+              <select name="searchField" class="md:w-fit w-3 border-e-2 border-blue-700 text-gray-800 dark:text-white bg-white dark:bg-gray-700 rounded-s-md
             hover:border-gray-800" required>
-              <option value="">select field</option>
-              <option value="byName">By Name</option>
-              <option value="byName">By Email</option>
-              <option value="byName">By Number</option>
-            </select>
+                <option value="">select field</option>
+                <option value="byName">By Name</option>
+                <option value="byName">By Email</option>
+                <option value="byName">By Number</option>
+              </select>
 
-            <input type="hidden" name="fromRes" data-th-value="view">
+              <input type="hidden" name="fromRes" data-th-value="view">
 
-            <input type="text" name="fieldValue"
-              class="md:w-fit max-w-40 text-black dark:text-gray-100 bg-gray-200 dark:bg-gray-700 py-1 px-2 border-none "
-              placeholder="search your contact" required>
+              <input type="text" name="fieldValue"
+                class="md:w-fit max-w-40 text-black dark:text-gray-100 bg-white dark:bg-gray-700 py-1 px-2 border-none "
+                placeholder="search your contact" required>
 
-            <button type="submit"
-              class="py-1 px-2 border-none text-white rounded-e-md bg-blue-600 hover:bg-blue-700 hover:border-gray-800">search</button>
-          </form>
+              <button type="submit"
+                class="py-1 px-2 border-none text-white rounded-e-md bg-blue-600 hover:bg-blue-700 hover:border-gray-800">search</button>
+            </form>
+          </div>
+          <div
+            class="flex md:mt-0 mt-2 flex-row justify-between gap-2 items-center bg-transparent w-fit h-fit py-2 px-3 rounded-xl">
+
+            <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-2 rounded-lg text-2xl">
+              <i class=" text-blue-500 fa-solid fa-user-plus"></i>
+            </div>
+            <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-2 rounded-lg text-2xl">
+              <i class="text-red-500 fa-solid fa-trash"></i>
+            </div>
+
+            <div class="bg-gray-400 hover:bg-white dark:bg-gray-600  p-2 rounded-lg text-2xl">
+              <i class=" text-yellow-400 fa-solid fa-bookmark"></i>
+            </div>
+            <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-2 rounded-lg  text-2xl">
+              <i class=" text-gray-200 fa-solid fa-pen-to-square"></i>
+            </div>
+
+          </div>
+
         </div>
-        <div
-          class="flex md:mt-0 mt-2 flex-row justify-between gap-2 items-center bg-gray-200 dark:bg-gray-700 w-fit h-fit py-2 px-3 rounded-xl">
 
-          <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-2 rounded-lg text-2xl">
-            <i class=" text-blue-500 fa-solid fa-user-plus"></i>
-          </div>
-          <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-2 rounded-lg text-2xl">
-            <i class="text-red-500 fa-solid fa-trash"></i>
-          </div>
-
-          <div class="bg-gray-400 hover:bg-white dark:bg-gray-600  p-2 rounded-lg text-2xl">
-            <i class=" text-yellow-400 fa-solid fa-bookmark"></i>
-          </div>
-          <div class="bg-gray-400 dark:bg-gray-600 hover:bg-white p-2 rounded-lg  text-2xl">
-            <i class=" text-gray-200 fa-solid fa-pen-to-square"></i>
-          </div>
-
+        <div class="content p-3 ">
+          <p class="text-xl"> for adding contact
+            <span class="md:pl-0 pl-3">
+              <a data-th-href="@{'/scm2/user/add-contact'}"
+                class="inline-block border-none px-2 py-1 cursor-pointer rounded-md text-white bg-blue-600 hover:bg-blue-700">
+                start from here
+              </a>
+            </span>
+          </p>
         </div>
 
-      </div>
+        <div class="flex justify-center w-full py-3">
+          <p class="text-xl text-center md:w-4/5 w-full"> You can easy to manage your contact at
+            one place SCM and you can adding the contacts and also manage this to using the features of SCM
+            such as like add-contact, view-contact, favorite contact, Send Mail also update the contact detail.
 
-      <div class="content p-3 ">
-        <p class="text-xl"> for adding contact
-          <span class="md:pl-0 pl-3">
-            <a data-th-href="@{'/scm2/user/add-contact'}"
-              class="inline-block border-none px-2 py-1 cursor-pointer rounded-md text-white bg-blue-600 hover:bg-blue-700">
-              start from here
-            </a>
-          </span>
-        </p>
-      </div>
-
-      <div class="flex justify-center w-full py-3">
-        <p class="text-xl text-center md:w-4/5 w-full"> You can easy to manage your contact at
-          one place SCM and you can adding the contacts and also manage this to using the features of SCM
-          such as like add-contact, view-contact, favorite contact, Send Mail also update the contact detail.
-
-        </p>
-      </div>
+          </p>
+        </div>
 
 
-      <p class="text-4xl text-left py-2">Contact Details </p>
-      <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden p-6 dark:bg-gray-600">
-          <h3 class="text-xl font-bold text-black mb-4 dark:text-white">Total Contacts</h3>
-          <div class="flex items-center flex-col">
-            <div class=" contact-ring" th:style="'background: conic-gradient(' + 'rgb(255, 111, 14) ' + 
+        <p class="text-4xl text-left py-2">Contact Details </p>
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden p-6 dark:bg-gray-600">
+            <h3 class="text-xl font-bold text-black mb-4 dark:text-white">Total Contacts</h3>
+            <div class="flex items-center flex-col">
+              <div class=" contact-ring" th:style="'background: conic-gradient(' + 'rgb(255, 111, 14) ' + 
     'calc(' + (1 / 1) + '* 360deg),' + 
     'blue 0' + ');'">
-              <div class="contact-ring-inner text-black dark:bg-gray-600 dark:text-gray-200">
-                <span data-th-text="${user.contactList.size()}"></span>
+                <div class="contact-ring-inner text-black dark:bg-gray-600 dark:text-gray-200">
+                  <span data-th-text="${user.contactList.size()}"></span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="mt-3 p-3">
-            <p class="text-center text-gray-600 dark:text-gray-300">Total saved contacts</p>
-          </div>
+            <div class="mt-3 p-3">
+              <p class="text-center text-gray-600 dark:text-gray-300">Total saved contacts</p>
+            </div>
 
-        </div>
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-gray-600 p-6">
-          <h3 class="text-xl font-bold text-black mb-4 dark:text-white">Favorite Contacts</h3>
-          <div class="flex items-center flex-col">
-            <div class="contact-ring" th:style="'background: conic-gradient(' + 'rgb(255, 111, 14) ' + 
+          </div>
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden dark:bg-gray-600 p-6">
+            <h3 class="text-xl font-bold text-black mb-4 dark:text-white">Favorite Contacts</h3>
+            <div class="flex items-center flex-col">
+              <div class="contact-ring" th:style="'background: conic-gradient(' + 'rgb(255, 111, 14) ' + 
                 'calc(' + (${fev} / (${user.contactList.size()} > 0 ? ${user.contactList.size()} : 1) )+ '* 360deg),' + 
                 'blue 0' + ');'">
-              <div class="contact-ring-inner bg-gray-100 dark:bg-gray-600">
-                <span data-th-text="${fev}"></span>
+                <div class="contact-ring-inner bg-gray-100 dark:bg-gray-600">
+                  <span data-th-text="${fev}"></span>
+                </div>
+              </div>
+              <div class="p-3 mt-3">
+                <p class="text-center text-gray-600 dark:text-gray-200">Total favorite contacts</p>
               </div>
             </div>
-            <div class="p-3 mt-3">
-              <p class="text-center text-gray-600 dark:text-gray-200">Total favorite contacts</p>
-            </div>
           </div>
+        </div>
+
+      </div>
+
+      <hr class="pt-1 mt-5 bg-gray-800 text-gray-600">
+
+      <div class="my-16 flex flex-col gap-2 md:flex-row justify-between items-center content-center ">
+
+        <img class="text-center border-2 h-20 w-fit mylogo rounded-md" data-th-src="@{'/img/whitescm.png'}" alt="Logo">
+
+        <div class="flex p-3 border-2 rounded-md items-center justify-center bg-white">
+
+          <p class="text-2xl text-center text-black">SmartContactManager.in</p>
+
+        </div>
+
+        <div class="flex p-3 border-2 rounded-md items-center justify-center bg-white">
+
+          <p class="text-2xl text-center text-black">SCM@gmail.com</p>
+
         </div>
       </div>
 
     </div>
-
-    <hr class="pt-1 mt-5 bg-gray-800 text-gray-600">
-
-    <div class="my-16 flex flex-col gap-2 md:flex-row justify-between items-center content-center ">
-
-      <img class="text-center border-2 h-20 w-fit mylogo rounded-md" data-th-src="@{'/img/whitescm.png'}" alt="Logo">
-
-      <div class="flex p-3 border-2 rounded-md items-center justify-center bg-white">
-
-        <p class="text-2xl text-center text-black">SmartContactManager.in</p>
-
-      </div>
-
-      <div class="flex p-3 border-2 rounded-md items-center justify-center bg-white">
-
-        <p class="text-2xl text-center text-black">SCM@gmail.com</p>
-
-      </div>
-    </div>
-
     <script>
 
       $(document).ready(() => {
