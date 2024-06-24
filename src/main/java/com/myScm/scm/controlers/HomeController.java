@@ -24,6 +24,7 @@ import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequestMapping("/scm2")
@@ -97,8 +98,24 @@ public class HomeController {
                     .getUserFormByUser(this.serviceImple.getUserByUsername(authentication.getName()));
             model.addAttribute("user", user);
         }
- 
+
         return new String("signin");
+    }
+
+    @PostMapping("/contactUs")
+    public String postMethodName(@RequestParam("email") String email, @RequestParam("mobile") String contactNumber,
+            @RequestParam("query") String query, HttpSession httpSession) {
+
+        if (this.serviceImple.sendFeedback(AppConstants.FEEDBACK_SENDER, email, contactNumber, query)) {
+
+            httpSession.setAttribute("message", new Message("feedback successfully delivered", MessageType.green));
+
+            return "redirect:/scm2/contact";
+        }
+
+        httpSession.setAttribute("message",
+                new Message("INTERNAL_SERVER_ERROR try agian after some time!!", MessageType.red));
+        return "redirect:/scm2/contact";
     }
 
     @GetMapping("/signup")
