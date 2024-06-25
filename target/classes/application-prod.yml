@@ -4,8 +4,8 @@
 spring:
   datasource:
     username: root
-    password: Deepak@@12
-    url: jdbc:mysql://localhost:3306/scm2
+    password: EusIhLWoHGgmhgMyWuHTagkKegygQRzg
+    url: jdbc:mysql://monorail.proxy.rlwy.net:39030/railway
 
 
   main:
