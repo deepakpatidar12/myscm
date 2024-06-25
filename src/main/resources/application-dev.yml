@@ -1,11 +1,18 @@
 
 #DataBase Configuration
 
+# spring:
+#   datasource:
+#     username: root
+#     password: Deepak@@12
+#     url: jdbc:mysql://localhost:3306/scm2
+
+
 spring:
   datasource:
-    username: root
+    username: postgres
     password: Deepak@@12
-    url: jdbc:mysql://localhost:3306/scm2
+    url: jdbc:postgresql://localhost:5432/Myscm
 
 
   main:

@@ -8,5 +8,5 @@ server:
 
 spring:
   profiles:
-    active: ${ENV:dev}
+    active: ${ENV:prod}
 

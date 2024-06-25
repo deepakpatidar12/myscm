@@ -1,7 +1,7 @@
 <div data-th-fragment="searchBar">
 
     <div id="action-button "
-        class="flex items-center justify-between flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
+        class="flex items-center justify-between px-2 flex-column flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 bg-white dark:bg-gray-900">
         <div>
             <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction"
                 class="inline-flex fixed invisible items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -48,7 +48,7 @@
 
         <div class="max-w-md">
             <form data-th-action="@{'/scm2/user/search'}" data-th-object="${searchForm}" method="get">
-                <div class="flex">
+                <div class="flex pt-1">
                     <select data-th-field="*{searchField}" required
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-s-md focus:ring-blue-500 focus:border-blue-500 block w-28 p-2.5 dark:bg-gray-700
                          dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">

@@ -2,7 +2,7 @@
 const selectedIds = JSON.parse(localStorage.getItem('selectedIds')) || [];
 const selectedDataDiv = document.getElementById('dropdownActionButton');
 
-if (selectedIds.length > 0) {
+if (selectedIds.length > 1) {
     selectedDataDiv.classList.remove('invisible');
 }
 
